@@ -1,7 +1,7 @@
 Summary: Utilities for configuring the linux ethernet bridge
 Name: bridge-utils
 Version: 1.2
-Release: 9%{?dist}
+Release: 10%{?dist}
 License: GPLv2+
 URL: http://bridge.sourceforge.net/
 Group: System Environment/Base
@@ -11,6 +11,8 @@ Patch1: bridge-utils-1.2-show-ports.patch
 Patch2: bridge-utils-1.2-foreach.patch
 Patch3: bridge-utils-1.2-params.patch
 Patch4: bridge-utils-1.2-Add_IGMP_snooping_support.patch
+Patch5: bridge-utils-1.2-show_selected_bridge.patch
+Patch6: bridge-utils-1.2-man_multicast.patch
 
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires: libsysfs-devel autoconf
@@ -33,6 +35,8 @@ Install bridge-utils if you want to use the linux ethernet bridge.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1 -b .Add_IGMP_snooping_support
+%patch5 -p1 -b .show_selected_bridge
+%patch6 -p1 -b .man_multicast
 
 %build
 autoconf
@@ -53,6 +57,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/brctl.8*
 
 %changelog
+* Thu Sep 13 2012 Thomas Woerner <twoerner@redhat.com> - 1.2-10
+- Added support for brctl show <bridge> (rhbz#690529)
+- Added multicast option documentation to man page (rhbz#676355)
+
 * Thu Apr 29 2010 Thomas Woerner <twoerner@redhat.com> - 1.2-9
 - Add IGMP snooping support (rhbz#574461)
   Backported version of Herbert Xu's patch
