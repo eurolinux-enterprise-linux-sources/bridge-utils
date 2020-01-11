@@ -1,7 +1,7 @@
 Summary:        Utilities for configuring the linux ethernet bridge
 Name:           bridge-utils
 Version:        1.5
-Release:        7%{?dist}
+Release:        9%{?dist}
 License:        GPLv2+
 URL:            http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge
 Group:          System Environment/Base
@@ -45,6 +45,12 @@ make DESTDIR=%{buildroot} SUBDIRS="brctl doc" install
 %{_mandir}/man8/brctl.8*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.5-9
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.5-8
+- Mass rebuild 2013-12-27
+
 * Tue Mar 26 2013 Thomas Woerner <twoerner@redhat.com> - 1.5-7
 - fixed build with kernel 3.8.x using upstream fix by Russell Senior
 
